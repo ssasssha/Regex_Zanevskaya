@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Regex_Zanevskaya"
         mc:Ignorable="d"
-        Title="Паспортный стол" Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="Паспортный стол" Height="450" Width="1025" MinHeight="450" MinWidth="1025">
     <Grid>
         <ListView x:Name="lv_passport" Margin="10,47,10,40" Height="NaN">
             <ListView.View>
@@ -26,7 +26,7 @@
                     <GridViewColumn Header="Дата выдачи" Width="100" DisplayMemberBinding="{Binding DateOfIssued}"/>
                     <GridViewColumn Header="Код подразделения" Width="100" DisplayMemberBinding="{Binding DepartmentCode}"/>
                     <GridViewColumn Header="Серия и номер" Width="100" DisplayMemberBinding="{Binding SeriesAndNumber}"/>
-                    <GridViewColumn Header="Дата рождения" Width="100" DisplayMemberBinding="{Binding DateofBirth}"/>
+                    <GridViewColumn Header="Дата рождения" Width="100" DisplayMemberBinding="{Binding DateOfBirth}"/>
                     <GridViewColumn Header="Место рождения" Width="100" DisplayMemberBinding="{Binding PlaceOfBirth}"/>
                 </GridView>
             </ListView.View>
