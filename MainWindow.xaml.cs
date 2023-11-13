@@ -20,24 +20,45 @@ namespace Regex_Zanevskaya
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Classes.Passport> Passports = new List<Classes.Passport>();
+        public static MainWindow init;
+
+
         public MainWindow()
         {
             InitializeComponent();
+            init = this;
         }
 
-        private void Add(object sender, RoutedEventArgs e)
+        public void LoadPassport()
         {
-
+            lv_passport.Items.Clear();
+            foreach (Classes.Passport Passport in Passports)
+            {
+                lv_passport.Items.Add(Passport);
+            }
         }
+
+        private void Add(object sender, RoutedEventArgs e) =>
+           new Windows.Add(null).ShowDialog();
+
 
         private void Update(object sender, RoutedEventArgs e)
         {
-
+            if (lv_passport.SelectedIndex > -1) { new Windows.Add(lv_passport.SelectedItem as Classes.Passport).ShowDialog(); }
+            else { MessageBox.Show("Выберите элемент для изменения"); }
         }
+
+
 
         private void Delete(object sender, RoutedEventArgs e)
         {
-
+            if (lv_passport.SelectedIndex > -1)
+            {
+                Passports.Remove(lv_passport.SelectedItem as Classes.Passport);
+                LoadPassport();
+            }
+            else { MessageBox.Show("Выберите элемент управления"); }
         }
     }
 }
