@@ -25,6 +25,7 @@ namespace Regex_Zanevskaya.Windows
         /// </summary>
         public Add(Classes.Passport EditPassports)
         {
+            string img = @"img/Паспорт.jpg";
             InitializeComponent();
             if (EditPassports != null)
             {
@@ -60,6 +61,38 @@ namespace Regex_Zanevskaya.Windows
                 MessageBox.Show("Неправильно указано отчество пользователя");
                 return;
             }
+            if (string.IsNullOrEmpty(DateOfIssued.Text) || !Classes.Common.CheckRegex.Match("^([1-9]|0[1-9]|[12][0-9]|3[01])\\.([1-9]|0[1-9]|1[012])\\.\\d{4}$", DateOfIssued.Text))
+            {
+                MessageBox.Show("Неправильно указана дата выдачи");
+                return;
+            }
+            if (string.IsNullOrEmpty(DateOfBirth.Text) || !Classes.Common.CheckRegex.Match("^([1-9]|0[1-9]|[12][0-9]|3[01])\\.([1-9]|0[1-9]|1[012])\\.\\d{4}$", DateOfBirth.Text))
+            {
+                MessageBox.Show("Неправильно указана дата рождения");
+                return;
+            }
+            if (string.IsNullOrEmpty(DepartmentCode.Text) || !Classes.Common.CheckRegex.Match("[0-9]{3}\\-[0-9]{3}", DepartmentCode.Text))
+            {
+                MessageBox.Show("Неправильно указан код департамента");
+                return;
+            }
+            if (string.IsNullOrEmpty(SeriesAndNumber.Text) || !Classes.Common.CheckRegex.Match("[0-9]{10}", SeriesAndNumber.Text))
+            {
+                MessageBox.Show("Неправильно указана серия и номер");
+                return;
+            }
+            if (string.IsNullOrEmpty(Issued.Text) || !Classes.Common.CheckRegex.Match("\\w+[а-я А-я]", Issued.Text))
+            {
+                MessageBox.Show("Неправильно указан выдаватель");
+                return;
+
+            }
+            if (string.IsNullOrEmpty(PlaceOfBirth.Text) || !Classes.Common.CheckRegex.Match("[гГ]\\.\\w+", PlaceOfBirth.Text))
+            {
+                MessageBox.Show("Неправильно Указан место рождения");
+                return;
+            }
+            
 
             if (EditPassports == null)
             {
@@ -75,7 +108,7 @@ namespace Regex_Zanevskaya.Windows
             EditPassports.SeriesAndNumber = SeriesAndNumber.Text;
             EditPassports.DateOfBirth = DateOfBirth.Text;
             EditPassports.PlaceOfBirth = PlaceOfBirth.Text;
-
+            EditPassports.Image = @"img/Паспорт.jpg";
             MainWindow.init.LoadPassport();
             this.Close();
         }

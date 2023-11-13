@@ -60,5 +60,35 @@ namespace Regex_Zanevskaya
             }
             else { MessageBox.Show("Выберите элемент управления"); }
         }
+
+        public void Search(string Fullname)
+        {
+            int ss = -1;
+            for (int i = 0; i < Passports.Count; i++)
+            {
+                string Name = Passports[i].Name.ToString().ToLower();
+                string Surname = Passports[i].Surname.ToString().ToLower();
+                string Patronymic = Passports[i].Patronymic.ToString().ToLower();
+                if (Name.Contains(Fullname) || Surname.Contains(Fullname) || Patronymic.Contains(Fullname))
+                {
+                    lv_passport.Items.Add(Passports[i]);
+                }
+            }
+        }
+
+        private void SearchFIO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (SearchFIO.Text == "" && e.Key == Key.Enter)
+            {
+                lv_passport.Items.Clear();
+                LoadPassport();
+                return;
+            }
+            string search = SearchFIO.Text.ToLower();
+            lv_passport.Items.Clear();
+            if (e.Key == Key.Enter)
+                Search(search);
+
+        }
     }
 }

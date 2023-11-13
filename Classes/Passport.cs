@@ -17,6 +17,7 @@ namespace Regex_Zanevskaya.Classes
         public string SeriesAndNumber { get; set; }
         public string DateOfBirth { get; set; }
         public string PlaceOfBirth { get; set; }
+        public string Image { get; set; }
 
     }
 }
